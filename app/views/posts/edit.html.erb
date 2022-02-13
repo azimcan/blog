@@ -1,8 +1,17 @@
 <div class="mx-auto md:w-2/3 w-full shadow-2xl p-8 bg-white rounded-lg">
-  <h1 class="font-bold text-4xl">Editing post</h1>
 
+  <div class="grid grid-rows-1 grid-cols-2">
+    <div class="flex justify-start">
+      <%= link_to (heroicon "arrow-left"), posts_path, class: "button ml-2" %>
+    </div>
+
+    <div class="flex justify-end">
+      <%= link_to (heroicon "pencil-alt"), @post, class: "button ml-2" %>
+    </div>
+  </div>
+
+  <h1 class="font-bold text-4xl mt-4 flex justify-center">Editing post</h1>
+  
   <%= render "form", post: @post %>
 
-  <%= link_to "Show this post", @post, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 hover:bg-gray-200 inline-block font-medium" %>
-  <%= link_to "Back to posts", posts_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 hover:bg-gray-200 inline-block font-medium" %>
 </div>

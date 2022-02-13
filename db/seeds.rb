@@ -14,8 +14,8 @@ paragraphs = [
 ]
 
 
-150.times do
-	parag = paragraphs.sample
-	Post.create(title: parag[0..10], body: parag, published: [true, false].sample)
+500.times do
+	paragraph = paragraphs.sample
+	Post.create(title: paragraph[0..10], body: paragraph, published: [true, false].sample)
 end 
 

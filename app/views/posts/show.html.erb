@@ -7,11 +7,5 @@
     <% end %>
 
     <%= render @post %>
-
-    <%= link_to 'Edit this post', edit_post_path(@post), class: "mt-2 rounded-lg py-3 px-5 bg-white hover:bg-gray-100 inline-block font-medium shadow-2xl" %>
-    <div class="inline-block ml-2">
-      <%= button_to 'Destroy this post', post_path(@post), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-white hover:bg-gray-100 font-medium shadow-2xl" %>
-    </div>
-    <%= link_to 'Back to posts', posts_path, class: "ml-2 rounded-lg py-3 px-5 bg-white hover:bg-gray-100 inline-block font-medium shadow-2xl" %>
   </div>
 </div>

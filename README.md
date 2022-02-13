@@ -1,3 +1,3 @@
 # README
 
-[Main Repo](https://github.com/azimcan/lab2023camp)
+[lab2023camp](https://github.com/azimcan/lab2023camp)

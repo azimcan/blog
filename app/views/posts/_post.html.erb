@@ -1,0 +1,27 @@
+<div id="<%= dom_id post %>" class="shadow-2xl p-4 mb-8 rounded-lg bg-white">
+  <p class="my-5 flex justify-center">
+    <!-- Published Control -->
+    <% if post.published %>
+      <%= heroicon "check", class: "h-6 w-6 text-green-500 bg-green-200 rounded-full"%>
+    <% else %>
+      <%= heroicon "x", class: "h-6 w-6 text-red-500 bg-red-200 rounded-full"%>
+    <% end %>
+  </p>
+
+  <p class="my-5">
+    <strong class="font-medium mb-1">Title:</strong>
+    <%= post.title %>
+  </p>
+
+
+  <p class="my-5">
+    <strong class="font-medium mb-1">Body:</strong>
+    <%= post.body[0..100] + " ..." %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this post", post, class: "rounded-lg py-3 px-5 bg-gray-100 hover:bg-gray-200 inline-block font-medium" %>
+    <%= link_to 'Edit this post', edit_post_path(post), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 hover:bg-gray-200 inline-block font-medium" %>
+  <% end %>
+</div>
+

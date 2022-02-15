@@ -16,6 +16,6 @@ paragraphs = [
 
 500.times do
 	paragraph = paragraphs.sample
-	Post.create(title: paragraph[0..10], body: paragraph, published: [true, false].sample)
+	Post.create(title: paragraph[0..10], body: paragraph, status: [ "draft", "published", "archived", "trashed" ].sample)
 end 
 

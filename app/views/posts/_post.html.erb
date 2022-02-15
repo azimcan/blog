@@ -3,7 +3,6 @@
     <div class="flex justify-end">
       <%= link_to (heroicon "zoom-in"), post, class: "button ml-2" %>
       <%= link_to (heroicon "pencil-alt"), edit_post_path(post), class: "button ml-2" %>
-      <%= link_to "TEST", edit_post_path(post), class: "button ml-2" %>
     </div>
   <% else %>
     <div class="grid grid-rows-1 grid-cols-2">
@@ -20,29 +19,23 @@
     </div>
   <% end %>
 
-  <p class="my-5 flex justify-center">
-    <!-- Published Control -->
-    <% if post.published %>
-      <%= heroicon "check", class: "h-6 w-6 text-green-500 bg-green-200 rounded-full"%>
-    <% else %>
-      <%= heroicon "x", class: "h-6 w-6 text-red-500 bg-red-200 rounded-full"%>
-    <% end %>
-  </p>
+  
 
-  <p class="my-5">
-    <strong class="font-medium mb-1">Title:</strong>
-    <%= post.title %>
-  </p>
+  <div class="my-5">
+    <div id="header" class="relative flex items-center">
+      <h1 class="font-bold text-4xl">
+        <%= post.title %>
+      </h1>
+      <!-- TODO -->
+      <span class="absolute right-0 px-2 text-xs rounded-2xl shadow-2xl bg-red-300 <%= post.status %>">
+        <%= post.status.capitalize %>
+      </span>
+    </div>
+  </div>
 
-
-  <p class="my-5">
-    <strong class="font-medium mb-1">Body:</strong>
-    <% if action_name != "show" %>
-      <%= post.body[0..100] + " ..." %>
-    <% else %>
-      <%= post.body%>
-    <% end %>
-  </p>
+  <div class="my-5">
+    <%= post.body %>
+  </div>
 
 </div>
 

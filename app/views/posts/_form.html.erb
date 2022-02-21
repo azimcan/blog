@@ -20,19 +20,20 @@
     <%= form.label :body %>
     <%= form.rich_text_area :body, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full h-auto" %>
   </div>
+  
   <div class="my-5 p-5">
     <%= form.label :status %>
     <%= form.select :status,
           Post.statuses.map {|k, v| [k.capitalize, k]}, {},
           { class: "block mt-2 hover:bg-gray-200 rounded-md" } %>
-
   </div>
 
   <div class="flex justify-center">
-    <% if action_name == "new" || "create" %>
+    <% if action_name == "new" || action_name == "create" %>
       <%= form.button (heroicon "plus"), class: "form-button" %>
-    <% elsif action_name == "update" || "edit" %>
+    <% elsif action_name == "update" || action_name == "edit" %>
       <%= form.button (heroicon "pencil-alt"), class: "form-button" %>
     <% end %>
   </div>
+
 <% end %>

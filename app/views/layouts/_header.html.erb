@@ -2,6 +2,19 @@
   <div class="flex justify-between items-center mb-8 px-8 py-4 bg-white rounded-b-lg shadow-2xl">
     
     <h1 class="font-bold text-4xl">Posts <span class="text-red-500"><%= @posts.size if action_name == "index" %></span> </h1>
+        <%= params[:page]  %>
+
+    <% if action_name == "index" %>
+      <div class="justify-center">
+        <div class="inline-flex rounded-md shadow-sm">
+          <%= link_to "All", posts_path(@posts, status: "all"), class: "group-button all rounded-l-lg" %>
+          <%= link_to "Draft", posts_path(@posts, status: "draft"), class: "group-button draft" %>
+          <%= link_to "Published", posts_path(@posts, status: "published"), class: "group-button published" %>
+          <%= link_to "Archived", posts_path(@posts, status: "archived"), class: "group-button archived" %>
+          <%= link_to "Trashed", posts_path(@posts, status: "trashed"), class: "group-button trashed rounded-r-lg" %>
+        </div>
+      </div>
+    <% end %>
 
     <%= link_to 'New post', new_post_path, class: "form-button" %>
     

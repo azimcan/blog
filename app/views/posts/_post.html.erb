@@ -17,9 +17,7 @@
         </div>
       </div>
     </div>
-  <% end %>
-
-  
+  <% end %>  
 
   <div class="my-5">
     <div id="header" class="relative flex items-center">
@@ -27,7 +25,7 @@
         <%= post.title %>
       </h1>
       <!-- TODO -->
-      <span class="absolute right-0 px-2 text-xs rounded-2xl shadow-2xl bg-red-300 <%= post.status %>">
+      <span class="absolute right-0 px-2 text-xs rounded-2xl shadow-2xl text-white font-bold <%= post.status %>">
         <%= post.status.capitalize %>
       </span>
     </div>
@@ -37,5 +35,15 @@
     <%= post.body %>
   </div>
 
-</div>
+  <div class="my-5 py-2  text-gray-400 text-xs grid grid-cols-2 grid-rows-1">
+    <div class="flex justify-start">
+      <%= pluralize post.comments.count, "comment" %>
+    </div>
+    <div class="flex justify-end">
+      <%= time_tag post.created_at, "data-local": "time-ago" %>
+    </div>
+  </div>
 
+
+
+</div>

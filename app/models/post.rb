@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+	has_many :comments
+
 	has_rich_text :body
 
 	enum status: [ :draft, :published, :archived, :trashed ]

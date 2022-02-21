@@ -1,0 +1,12 @@
+<div id="<%= dom_id(comment) %>" class="bg-opacity-10 bg-gray-900 rounded-2xl px-5">
+  
+  <div class="my-5">
+    <p class="py-2">
+      <%= comment.content %>    
+    </p>
+    <div class="text-right text-gray-400 text-xs py-2">
+      <%= time_tag comment.created_at, "data-local": "time-ago" %>
+    </div>
+  </div>
+
+</div>

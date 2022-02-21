@@ -14,8 +14,15 @@ paragraphs = [
 ]
 
 
-500.times do
+10.times do
 	paragraph = paragraphs.sample
-	Post.create(title: paragraph[0..10], body: paragraph, status: [ "draft", "published", "archived", "trashed" ].sample)
+  post = Post.create(title: paragraph[0..10], body: paragraph, status: [ "draft", "published", "archived", "trashed" ].sample)
+
+  
+  rand(0..13).times do
+    rand_number = rand(paragraph.size)
+    comment = paragraph[rand_number..(rand_number+50)]
+    post.comments.create! content: comment
+  end
 end 
 

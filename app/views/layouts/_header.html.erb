@@ -10,7 +10,6 @@
 
     <% if signed_in? %>
       <div class="inline-flex">
-
         <%= link_to "New post", new_post_path, class: "group-button py-2 bg-blue-500 rounded-l-lg" %>
         <%= link_to "Profile", profile_path(current_user.username), class: "group-button py-2 bg-yellow-500" %>
         <%= link_to "#{current_user.email[0..3]}... logout", logout_path, data: {
@@ -19,7 +18,10 @@
                       }, class: "group-button py-2 bg-red-500 rounded-r-lg" %>
       </div>
     <% else %>
-      <%= link_to "Login", login_path, class: "group-button py-2 bg-green-500 rounded-lg" %>
+      <div class="inline-flex">
+        <%= link_to "Register", new_user_path, class: "group-button py-2 bg-blue-500 rounded-l-lg" %>
+        <%= link_to "Login", login_path, class: "group-button py-2 bg-green-500 rounded-r-lg" %>
+      </div>
     <% end %>
 
 

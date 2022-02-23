@@ -1,12 +1,12 @@
 <%= form_with url: login_url do |form| %>
   
   <div class="mt-4 flex justify-center">
-		<%= form.text_field :email, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mb-3" %>
-	</div>
+    <%= form.text_field :email, placeholder: "Email", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mb-3" %>
+  </div>
 
   <div class="mb-4 flex justify-center">
-		<%= form.password_field :password, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mb-3" %>
-	</div>
+    <%= form.password_field :password, placeholder: "Password", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mb-3" %>
+  </div>
   
   <div class="flex justify-center">
 		<%= form.button "Login", class: "form-button"%>

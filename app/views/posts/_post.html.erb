@@ -3,7 +3,6 @@
   <% if action_name != "show" %>
     <div class="flex justify-end">
       <%= link_to (heroicon "zoom-in"), post, class: "button ml-2" %>
-      <%= link_to (heroicon "pencil-alt"), edit_post_path(post), class: "button ml-2" if signed_in? %>
     </div>
   <% end %>  
 

@@ -4,11 +4,8 @@ class CommentsController < ApplicationController
   def create
     @comment = @post.comments.new comment_params
     @comment.user = current_user.nil? ? nil : current_user
-    if @comment.save
-      redirect_to @post
-    else
-      render 'new'
-    end
+
+    redirect_to @post if @comment.save
   end
 
   private

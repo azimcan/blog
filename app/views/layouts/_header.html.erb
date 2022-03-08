@@ -4,7 +4,7 @@
     <h1 class="font-bold text-4xl">
       <%= link_to "Posts", root_path %>
       <span class="text-red-500">
-        <%= @posts.size if action_name == "index" %>
+        <%= @posts.size if action_name == "index" && controller_name == "posts" %>
       </span>
     </h1>
 

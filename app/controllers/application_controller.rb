@@ -6,11 +6,16 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    # @current_user nil veya false değerdeyse User.find(session[:user_id]) değerini alacaktır.
+    if session[:user_id]
+      @current_user = User.find(session[:user_id])
+    else
+      @current_user = 'Anonymous'
+    end
   end
 
   def signed_in?
-    current_user
+    current_user == 'Anonymous' ? nil : current_user
   end
 
   def allowed?

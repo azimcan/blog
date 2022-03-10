@@ -1,11 +1,15 @@
 class CommentsController < ApplicationController
   before_action :set_post
+  before_action :allowed?, only: :destroy
 
   def index; end
 
   def create
     @comment = @post.comments.new comment_params
-    @comment.user = current_user.nil? ? nil : current_user
+    
+    if current_user != "Anonymous"
+      @comment.user = current_user
+    end
 
     respond_to do |format|
       if @comment.save
@@ -13,16 +17,6 @@ class CommentsController < ApplicationController
         format.turbo_stream do
           render turbo_stream: turbo_stream.append(:comments, partial: "comments/comment", locals: { comment: @comment })
         end
-      end
-    end
-  end
-
-  def update
-    respond_to do |format|
-      if @post.update(post_params)
-        format.html {}
-      else
-        format.html { render :edit, status: :unprocessable_entity }
       end
     end
   end

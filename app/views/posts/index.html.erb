@@ -1,8 +1,9 @@
 <div class="w-full">
   <div id="posts" class="min-w-full">
+
     <div class="flex items-center justify-center mb-2">
-      <% (@post_count/10).ceil.times do |i| %>
-        <%= link_to (i+1), root_path(page: i+1), class: "group-button bg-gray-500 p-2 "  %>
+      <% (@posts.size/10).ceil.times do |i| %>
+        <%= render 'layouts/components/group_button', { value: (i+1), href: root_path(page: i+1), class: "bg-white text-gray-900 p-2"} %>
       <% end %>
     </div>
     <%= render @posts %>

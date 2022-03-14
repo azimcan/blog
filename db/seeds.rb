@@ -13,23 +13,15 @@ paragraphs = [
   'Nulla tempus. Nullam non lorem. Sed non arcu. Pellentesque sit amet arcu. Praesent eu ligula. Donec sagittis, lacus ac laoreet commodo, nisl risus cursus libero, ac aliquam ipsum erat sed ante. Etiam consequat, sapien vel dapibus lobortis, orci turpis sollicitudin quam, ac porttitor magna diam nec massa. Aenean aliquam, nisl eu imperdiet gravida, eros nisi facilisis velit, eget interdum libero sem ut eros. Sed magna. Sed vitae odio. Praesent augue. Proin volutpat. Maecenas urna quam, accumsan sit amet, sodales vitae, commodo sed, purus. Donec hendrerit. Suspendisse congue. Fusce diam metus, laoreet in, mattis ut, ullamcorper ac, urna. In eget lacus. Sed mollis iaculis pede.'
 ]
 
-100.times do
+10.times do
   paragraph = paragraphs.sample
   post = Post.new(title: paragraph[0..10], body: paragraph, status: %w[draft published archived trashed].sample)
   post.user_id = User.all.sample.id
-  if post.save
-    puts 'Post created.'
-    rand(0..13).times do
-      rand_number = rand(paragraph.size)
-      comment = paragraph[rand_number..(rand_number + 50)]
-      post.comments.new(content: comment)
-      if post.save
-        puts '  Comment created.'
-      else
-        puts '  Comment not created.'
-      end
-    end
-  else
-    puts 'Post not created.'
+  post.save
+  rand(0..13).times do
+    rand_number = rand(paragraph.size)
+    comment = paragraph[rand_number..(rand_number + 50)]
+    post.comments.new(content: comment)
+    post.save
   end
 end

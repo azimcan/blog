@@ -30,7 +30,7 @@
 
   <div class="flex justify-center">
     <% if action_name == "new" || action_name == "create" %>
-      <%= form.button (heroicon "plus"), class: "form-button" %>
+      <%= form.button heroicon("plus"), class: "form-button" %>
     <% elsif action_name == "update" || action_name == "edit" %>
       <%= form.button (heroicon "pencil-alt"), class: "form-button" %>
     <% end %>

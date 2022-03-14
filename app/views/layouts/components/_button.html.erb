@@ -1,0 +1,11 @@
+<%= link_to local_assigns[:value],
+            local_assigns[:href], 
+            method: local_assigns[:method],
+            class: "py-1 px-3
+                    hover:px-5
+                    rounded-lg
+                    font-medium
+                    text-white
+                    bg-gray-900 hover:bg-gray-800
+                    shadow-2xl
+                    transition-all #{local_assigns[:class]}" %>

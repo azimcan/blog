@@ -11,5 +11,5 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  get '/:id', to: 'users#show', as: :profile
+  get '/:id', to: 'users#profile', as: :profile
 end

@@ -5,17 +5,6 @@
 @import 'actiontext.css';
 
 @layer components {
-  .button {
-    @apply
-    py-3 px-5
-    hover:px-6
-    rounded-lg
-    font-medium
-    text-white
-    bg-gray-900 hover:bg-gray-800
-    shadow-2xl
-    transition-all;
-  }
   .form-button {
     @apply
     py-3 px-5
@@ -25,32 +14,6 @@
     font-medium
     bg-blue-600 hover:bg-blue-500
     shadow-2xl
-  }
-
-  .group-button {
-    @apply
-    px-2
-    text-xs
-    text-white
-    font-bold
-    hover:px-4
-    transition-all;
-  }
-
-  .all {
-    @apply bg-gray-900;  
-  }
-  .draft {
-    @apply bg-blue-500;  
-  }
-  .published {
-    @apply bg-green-500;  
-  }
-  .archived {
-    @apply bg-yellow-500;    
-  }
-  .trashed {
-    @apply bg-red-500;
   }
 }
 

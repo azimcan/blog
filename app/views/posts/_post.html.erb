@@ -12,10 +12,10 @@
           <% else %>
             <%= link_to post.user.username, profile_path(post.user.username), class: "px-2 mr-2 text-xs rounded-2xl shadow-2xl text-white font-bold bg-gray-900" %>
           <% end %>
+
           <!-- TODO -->
-          <span class="px-2 text-xs rounded-2xl shadow-2xl text-white font-bold bg-gray-900 <%= post.status %>">
-            <%= post.status.capitalize %>
-          </span>
+          <%= render 'layouts/components/badge', { value: post.status.capitalize, class: '', status: "#{post.status}" } %>
+
         </div>
       </div>
     </div>

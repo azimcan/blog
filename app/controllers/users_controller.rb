@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
+  def profile
     @posts = current_user.posts
   end
 

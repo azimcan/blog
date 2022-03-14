@@ -1,0 +1,21 @@
+<% if local_assigns[:status] == 'draft' %>
+  <span class="px-2 text-xs rounded-2xl shadow-2xl text-white font-bold bg-blue-500 #{local_assigns[:class]}">
+    <%= local_assigns[:value] %>
+  </span>
+<% elsif local_assigns[:status] == "published" %>
+  <span class="px-2 text-xs rounded-2xl shadow-2xl text-white font-bold bg-green-500 #{local_assigns[:class]}">
+    <%= local_assigns[:value] %>
+  </span>
+<% elsif local_assigns[:status] == "archived" %>
+  <span class="px-2 text-xs rounded-2xl shadow-2xl text-white font-bold bg-yellow-500 #{local_assigns[:class]}">
+    <%= local_assigns[:value] %>
+  </span>
+<% elsif local_assigns[:status] == "trashed" %>
+  <span class="px-2 text-xs rounded-2xl shadow-2xl text-white font-bold bg-red-500 #{local_assigns[:class]}">
+    <%= local_assigns[:value] %>
+  </span>
+<% else %>
+  <span class="px-2 text-xs rounded-2xl shadow-2xl text-white font-bold bg-red-500 #{local_assigns[:class]}">
+    <%= local_assigns[:value] %>
+  </span>
+<% end %>

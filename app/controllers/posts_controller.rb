@@ -4,7 +4,8 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all
+    params[:page] ||= 0
+    @posts = Post.published.order(created_at: :desc).limit(10).offset(params[:page].to_i * 10)
   end
 
   # GET /posts/1 or /posts/1.json
@@ -26,9 +27,6 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         format.html { redirect_to post_url(@post), notice: 'Post was successfully created.' }
-        format.turbo_stream do
-          render turbo_stream: turbo_stream.append(:posts, partial: "post", locals: { post: @post })
-        end
       else
         format.html { render :new, status: :unprocessable_entity }
       end

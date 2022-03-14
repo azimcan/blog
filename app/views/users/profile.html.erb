@@ -3,10 +3,16 @@
     <div class="p-4 mb-8 rounded-lg bg-white min-w-full">
 
       <div class="flex justify-end">
-        <%= link_to (heroicon "zoom-in"), post, class: "button ml-2" %>
-        <%= link_to (heroicon "pencil-alt"), edit_post_path(post), class: "button ml-2" if signed_in? %>
-        <%= button_to (heroicon "trash"), post_path(post), method: :delete, class: "button ml-2" if signed_in? %>
+        
+        <%= render 'layouts/components/group_button', { value: heroicon("zoom-in"), href: post, class: "px-3 hover:px-6" } %>
+
+        <% if signed_in? %>
+          <%= render 'layouts/components/group_button', { value: heroicon("pencil-alt"), href: edit_post_path(post), class: "px-3 hover:px-6" } %>
+          <%= render 'layouts/components/group_button', { value: heroicon("trash"), href: post_path(post), class: "px-3 hover:px-6", method: :delete } %>
+        <% end %>
+
       </div>
+
       <div class="my-5">
         <div id="header" class="relative flex items-center">
           <h1 class="font-bold text-4xl">
@@ -18,9 +24,8 @@
               <%= post.user.nil? ? "nil" : post.user.username %>
             </span>
 
-            <span class="px-2 text-xs rounded-2xl shadow-2xl text-white font-bold bg-gray-900 <%= post.status %>">
-              <%= post.status.capitalize %>
-            </span>
+
+            <%= render 'layouts/components/badge', { value: post.status.capitalize, class: '', status: "#{post.status}" } %>
           </div>
         </div>
       </div>

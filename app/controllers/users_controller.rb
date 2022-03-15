@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 
   def set_user
     @user = if params.key? :username
-              User.find_by_username(params[:username])
+              User.find_by(username: params[:username])
             else
               User.find(params[:id])
             end

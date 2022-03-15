@@ -5,11 +5,12 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy', as: :logout
 
-  resources :users, only: %i[new create]
-
   resources :posts do
     resources :comments
   end
 
-  get '/:id', to: 'users#profile', as: :profile
+  resources :users, only: %i[new edit create update]
+
+  get '/:username', to: 'users#show', as: :profile
+  get '/:username/edit', to: 'users#edit', as: :edit_profile
 end

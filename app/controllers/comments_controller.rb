@@ -6,16 +6,14 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @post.comments.new comment_params
-    
-    if current_user != "Anonymous"
-      @comment.user = current_user
-    end
+
+    @comment.user = current_user if current_user != 'Anonymous'
 
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @post }
         format.turbo_stream do
-          render turbo_stream: turbo_stream.append(:comments, partial: "comments/comment", locals: { comment: @comment })
+          render turbo_stream: turbo_stream.append(:comments, partial: 'comments/comment', locals: { comment: @comment })
         end
       end
     end

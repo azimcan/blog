@@ -1,6 +1,14 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user, :signed_in?
+  helper_method :current_user, :signed_in?, :username_controller
+  before_action :username_controller
   before_action :post_count
+
+  def username_controller
+    if signed_in? && !current_user.username? && (edit_user_path(current_user) != "/users/#{current_user.id}/edit")
+      asd
+      redirect_to edit_user_path(current_user), notice: 'You must be added a username!'
+    end
+  end
 
   def login(user_id)
     session[:user_id] = user_id
@@ -8,11 +16,11 @@ class ApplicationController < ActionController::Base
 
   def current_user
     # @current_user nil veya false değerdeyse User.find(session[:user_id]) değerini alacaktır.
-    if session[:user_id]
-      @current_user = User.find(session[:user_id])
-    else
-      @current_user = 'Anonymous'
-    end
+    @current_user = if session[:user_id]
+                      User.find(session[:user_id])
+                    else
+                      'Anonymous'
+                    end
   end
 
   def signed_in?
@@ -20,7 +28,7 @@ class ApplicationController < ActionController::Base
   end
 
   def allowed?
-    redirect_to root_path, notice: 'You are not authorized to do this.' if current_user.nil?
+    redirect_to root_path, notice: 'You are not authorized to do this.' unless signed_in?
   end
 
   def post_count

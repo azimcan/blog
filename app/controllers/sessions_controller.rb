@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   before_action :allowed?, only: [:destroy]
+  before_action :username_controller
 
   def new; end
 

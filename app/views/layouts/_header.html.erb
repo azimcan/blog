@@ -12,7 +12,7 @@
       <div class="inline-flex">
         <%= render 'layouts/components/group_button', { value: "New post", href: new_post_path, class: "group-button py-2 bg-blue-500" } %>
 
-        <%= render 'layouts/components/group_button', { value: "Profile", href: current_user.username.nil? ? user_path(current_user.id) : profile_path(current_user.username), class: 'py-2 bg-yellow-500' }%>
+        <%= render 'layouts/components/group_button', { value: "Profile", href: (profile_path(current_user.username) unless current_user.username.nil?), class: 'py-2 bg-yellow-500' }%>
 
         <%= render 'layouts/components/group_button', { value: "#{current_user.email[0..3]}... logout", href: logout_path, data: {
                         turbo_method: :delete,

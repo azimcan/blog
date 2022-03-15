@@ -1,14 +1,20 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update]
   before_action :allowed?, only: %i[edit update]
+  before_action :username_controller
+  
 
   def new
     @user = User.new
   end
 
-  def edit; end
+  def edit
+    @path = update_user_path
+    render :edit, action: update_user_path
+  end
 
   def create
+    @path = update_user_path
     @user = User.new(user_params)
     if @user.save
       login(@user.id)
@@ -22,7 +28,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to profile_path(@user), notice: 'Updated information.'
     else
-      render :edit, layout: 'edit'
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -33,11 +39,7 @@ class UsersController < ApplicationController
   private
 
   def set_user
-    @user = if params.key? :username
-              User.find_by(username: params[:username])
-            else
-              User.find(params[:id])
-            end
+    @user = User.find_by(username: params[:username])
   end
 
   def user_params

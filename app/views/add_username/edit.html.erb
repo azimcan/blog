@@ -1,0 +1,32 @@
+<div class="mx-auto w-full shadow-2xl rounded-lg p-8 bg-white">
+
+  <h1 class="font-bold text-4xl mt-4 flex justify-center">Add Username</h1>
+
+  <%= form_with model: current_user, url: add_username_update_path do |form| %>
+    <% if current_user.errors.any? %>
+      <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+        <h2><%= pluralize(current_user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+        <ul>
+          <% current_user.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="mt-4 flex justify-center">
+      <%= form.text_field :username, placeholder: "Username", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mb-3" %>
+    </div>
+
+    <div class="mb-4 flex justify-center">
+      <%= form.password_field :password, placeholder: "Password", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mb-3" %>
+    </div>
+    
+    <div class="flex justify-center">
+      <%= form.button (heroicon "plus"), class: "form-button" %>
+    </div>
+
+  <% end %>
+
+</div>

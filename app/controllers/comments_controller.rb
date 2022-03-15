@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_post
   before_action :allowed?, only: :destroy
+  before_action :username_controller
 
   def index; end
 

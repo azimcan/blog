@@ -9,8 +9,10 @@
         <div class="absolute right-0">
           <% if post.user.nil? %>
             <span class="px-2 mr-2 text-xs rounded-2xl shadow-2xl text-white font-bold bg-gray-900">nil</span>
+          <% elsif post.user.username.nil? %>
+            <span class="px-2 mr-2 text-xs rounded-2xl shadow-2xl text-white font-bold bg-gray-900"><%= post.user.email[0..4] %></span>
           <% else %>
-            <%= link_to post.user.email, profile_path(post.user.email), class: "px-2 mr-2 text-xs rounded-2xl shadow-2xl text-white font-bold bg-gray-900" %>
+            <%= link_to post.user.username, profile_path(post.user.username), class: "px-2 mr-2 text-xs rounded-2xl shadow-2xl text-white font-bold bg-gray-900" %>
           <% end %>
 
           <!-- TODO -->

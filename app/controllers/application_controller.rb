@@ -1,12 +1,10 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user, :signed_in?, :username_controller
-  before_action :username_controller
   before_action :post_count
 
   def username_controller
-    if signed_in? && !current_user.username? && (edit_user_path(current_user) != "/users/#{current_user.id}/edit")
-      asd
-      redirect_to edit_user_path(current_user), notice: 'You must be added a username!'
+    if signed_in? && current_user.username.nil?
+      redirect_to add_username_path, notice: 'You must be added a username!'
     end
   end
 

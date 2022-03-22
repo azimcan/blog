@@ -1,9 +1,21 @@
 <div class="w-full">
-  <div id="posts" class="min-w-full">
+  <div class="bg-white rounded-lg">
+    <div data-controller="slider" class="relative bg-red-500">
+      <div class="flex justify-items-center justify-center">
+        <div data-slider-target="slide" class="h-32 w-60 bg-blue-500">1</div>
+        <div data-slider-target="slide" class="h-32 w-60 bg-purple-500" hidden>2</div>
+        <div data-slider-target="slide" class="h-32 w-60 bg-yellow-500" hidden>3</div>
+        <div data-slider-target="slide" class="h-32 w-60 bg-green-500" hidden>4</div>
+      </div>
+      <button data-action="slider#previous" class="absolute left-0 top-1/2"><%= heroicon 'chevron-left' %></button>
+      <button data-action="slider#next" class="absolute right-0 top-1/2"><%= heroicon 'chevron-right' %></button>
+    </div>
+  </div>
 
+  <div id="posts" class="min-w-full">
     <div class="flex items-center justify-center mb-2">
       <% (@posts.size/10).ceil.times do |i| %>
-        <%= render 'layouts/components/group_button', { value: (i+1), href: root_path(page: i+1), class: "bg-white text-gray-900 p-2"} %>
+        <%= link_to (i+1), root_path(page: i+1), class: "group-button bg-gray-500 p-2" %>
       <% end %>
     </div>
     <%= render @posts %>

@@ -3,8 +3,8 @@
   <div class="my-5">
     <div class="flex justify-end">
       <% if comment.user == current_user %>
-        <%= link_to (heroicon "pencil-alt", class: "h-5 w-5"), edit_post_comment_path(comment.post, comment), class: "button mt-2 py-1 px-2 hover:px-3 ml-2" %>
-        <%= button_to (heroicon "trash", class: "h-5 w-5"), post_comment_path(comment.post, comment), method: :delete, class: "button mt-2 py-1 px-2 hover:px-3 ml-2" %>
+        <%= link_to (heroicon "pencil-alt", class: "h-5 w-5"), edit_post_comment_path(comment.post, comment), class: "py-1 px-2 hover:px-5 rounded-lg font-medium text-white bg-gray-900 hover:bg-gray-800 shadow-2xl transition-all mt-2 hover:px-3 ml-2" %>
+        <%= button_to (heroicon "trash", class: "h-5 w-5"), post_comment_path(comment.post, comment), method: :delete, class: "py-1 px-2 hover:px-5 rounded-lg font-medium text-white bg-gray-900 hover:bg-gray-800 shadow-2xl transition-all mt-2 hover:px-3 ml-2" %>
       <% end %>
     </div>
     <p class="py-2">

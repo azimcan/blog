@@ -33,7 +33,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @posts = @user.posts
+    if Post.statuses.keys.include? params[:filter]       
+      @posts = @user.posts.where status: params[:filter].to_sym
+    else
+      @posts = @user.posts
+    end
   end
 
   private

@@ -14,11 +14,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    @path = update_user_path
+    # @path = create_user_path
     @user = User.new(user_params)
     if @user.save
       login(@user.id)
-      redirect_to profile_path(@user), notice: 'Register successfull.'
+      redirect_to profile_path(@user.username), notice: 'Register successfull.'
     else
       render :new, status: :unprocessable_entity
     end

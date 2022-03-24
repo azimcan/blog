@@ -1,6 +1,13 @@
 <div id="<%= dom_id post %>">
   <div class="shadow-2xl py-4 px-8 mb-8 rounded-lg bg-white">
-    
+    <div class="flex justify-end">
+
+    <% if signed_in? %>
+      <%= link_to (heroicon "pencil-alt"), edit_post_path(post), class: "group-button" if signed_in? %>
+      <%= button_to (heroicon "trash"), post_path(post), method: :delete, class: "group-button rounded-r-lg" if signed_in? %>
+    <% end %>
+
+    </div>
     <div class="my-5">
       <div id="header" class="grid grid-cols-2">
         <h1 class="font-bold text-4xl">

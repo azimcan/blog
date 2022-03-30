@@ -5,8 +5,12 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    params[:page] ||= 0
-    @posts = Post.published.order(created_at: :desc).limit(10).offset(params[:page].to_i * 10)
+    if params[:format] = 'json' 
+     @posts = Post.all
+    else
+      params[:page] ||= 0
+      @posts = Post.published.order(created_at: :desc).limit(10).offset(params[:page].to_i * 10)
+    end
   end
 
   # GET /posts/1 or /posts/1.json

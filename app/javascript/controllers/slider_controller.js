@@ -3,21 +3,44 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static targets = [ "slide"]
+  static values = {
+    auto: Boolean,
+    speed: Number
+  }
 
   initialize() {
     this.index = 0
+    this.autoMouse = true
   }
 
   connect() {
-    this.refreshTimer = setInterval(() => {
-      this.next()
-    }, 3000)
+    this.play()
   }
 
   disconnect() {
+    this.stop()
+  }
+
+  play() {
+    this.refreshTimer = setInterval(() => {
+      if (this.autoValue == true && this.autoMouse == true ) {
+        this.next()
+      }
+    }, this.speedValue)
+  }
+
+  stop() {
     if (this.refreshTimer) {
       clearInterval(this.refreshTimer)
     }
+  }
+
+  mouseOver() {
+    this.autoMouse = false
+  }
+
+  mouseOut() {
+    this.autoMouse = true
   }
 
   next() {
@@ -37,7 +60,10 @@ export default class extends Controller {
 
   showCurrentSlide() {
     this.slideTargets.forEach((element, index) => {
-      element.hidden = index != this.index
+      if (index == this.index) {
+        element.classList.remove("hidden")
+      }
+      element.classList.add("hidden") = index != this.index
     })
   }
 }

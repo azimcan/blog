@@ -1,15 +1,25 @@
 <div class="w-full">
-  <div class="bg-white rounded-lg" hidden>
-    <div data-controller="slider" class="relative bg-red-500">
-      <div class="flex justify-items-center justify-center">
-        <div data-slider-target="slide" class="h-32 w-60 bg-blue-500">1</div>
-        <div data-slider-target="slide" class="h-32 w-60 bg-purple-500" hidden>2</div>
-        <div data-slider-target="slide" class="h-32 w-60 bg-yellow-500" hidden>3</div>
-        <div data-slider-target="slide" class="h-32 w-60 bg-green-500" hidden>4</div>
-      </div>
-      <button data-action="slider#previous" class="absolute left-0 top-1/2"><%= heroicon 'chevron-left' %></button>
-      <button data-action="slider#next" class="absolute right-0 top-1/2"><%= heroicon 'chevron-right' %></button>
+
+  <div class="relative"
+       data-controller="slider"
+       data-slider-auto-value="true"
+       data-slider-speed-value="3000"
+       data-action="mouseover->slider#mouseOver mouseout->slider#mouseOut">
+
+    <div class="">
+      <div data-slider-target="slide" class="flex justify-center items-center h-64 w-full bg-blue-500 text-9xl rounded-lg">1</div>
+      <div data-slider-target="slide" class="flex justify-center items-center h-64 w-full bg-purple-500 text-9xl rounded-lg hidden">2</div>
+      <div data-slider-target="slide" class="flex justify-center items-center h-64 w-full bg-yellow-500 text-9xl rounded-lg hidden">3</div>
+      <div data-slider-target="slide" class="flex justify-center items-center h-64 w-full bg-green-500 text-9xl rounded-lg hidden">4</div>
     </div>
+
+    <button data-action="slider#previous" class="flex justify-center items-center absolute top-0 left-0 z-30 px-4 h-full cursor-pointer">
+      <%= heroicon 'chevron-left' %>
+    </button>
+
+    <button data-action="slider#previous" class="flex justify-center items-center absolute top-0 right-0 z-30 px-4 h-full cursor-pointer">
+      <%= heroicon 'chevron-right' %>
+    </button>
   </div>
 
   <div id="posts" class="min-w-full">

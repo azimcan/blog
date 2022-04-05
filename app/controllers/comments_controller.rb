@@ -3,7 +3,13 @@ class CommentsController < ApplicationController
   before_action :allowed?, only: :destroy
   before_action :username_controller
 
-  def index; end
+  def index
+    @comments = @post.comments
+  end
+
+  def show
+    @comment = Comment.find(params[:id])
+  end
 
   def create
     @comment = @post.comments.new comment_params

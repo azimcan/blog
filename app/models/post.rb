@@ -1,17 +1,19 @@
 class Post < ApplicationRecord
-	has_rich_text :body
+  has_many :comments, dependent: :destroy
+  belongs_to :user
 
-	enum status: [ :draft, :published, :archived, :trashed ]
+  has_rich_text :body
 
-	validates :title,
-						presence: true,
-						length: { in: 4..36 }
+  enum status: %i[draft published archived trashed]
 
-	validates :body,
-						presence: true,
-						length: { in: 36..10000}
+  validates :title,
+            presence: true,
+            length: { in: 4..36 }
 
-	validates :status,
-						presence: true
+  validates :body,
+            presence: true,
+            length: { in: 36..10_000 }
 
+  validates :status,
+            presence: true
 end
